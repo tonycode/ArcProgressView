@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <dev.tonycode.views.ArcProgressView
+        android:id="@+id/arcProgressView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="32dp"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_sheet"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="32dp"
+            >
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVerticalHalf"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5"
+                />
+
+            <TextView
+                android:id="@+id/startAngleLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/startAngleStepper"
+                app:layout_constraintEnd_toStartOf="@id/guidelineVerticalHalf"
+                app:layout_constraintBottom_toBottomOf="@id/startAngleStepper"
+                app:layout_constraintHorizontal_bias="0"
+                android:text="startAngle (-360..360)"
+                />
+
+            <dev.tonycode.stepperviews.IntStepperView
+                android:id="@+id/startAngleStepper"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/guidelineVerticalHalf"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:isv_value="-180"
+                app:isv_minValue="-360"
+                app:isv_maxValue="360"
+                app:isv_step="45"
+                />
+
+            <TextView
+                android:id="@+id/sweepAngleLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/sweepAngleStepper"
+                app:layout_constraintEnd_toStartOf="@id/guidelineVerticalHalf"
+                app:layout_constraintBottom_toBottomOf="@id/sweepAngleStepper"
+                app:layout_constraintHorizontal_bias="0"
+                android:text="sweepAngle (0..360)"
+                />
+
+            <dev.tonycode.stepperviews.IntStepperView
+                android:id="@+id/sweepAngleStepper"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/guidelineVerticalHalf"
+                app:layout_constraintTop_toBottomOf="@id/startAngleStepper"
+                android:layout_marginTop="@dimen/controls_spacing"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:isv_value="180"
+                app:isv_minValue="0"
+                app:isv_maxValue="360"
+                app:isv_step="45"
+                />
+
+            <TextView
+                android:id="@+id/trackWidthLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/trackWidthStepper"
+                app:layout_constraintEnd_toStartOf="@id/guidelineVerticalHalf"
+                app:layout_constraintBottom_toBottomOf="@id/trackWidthStepper"
+                app:layout_constraintHorizontal_bias="0"
+                android:text="trackWidth (0..*)"
+                />
+
+            <dev.tonycode.stepperviews.IntStepperView
+                android:id="@+id/trackWidthStepper"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/guidelineVerticalHalf"
+                app:layout_constraintTop_toBottomOf="@id/sweepAngleStepper"
+                android:layout_marginTop="@dimen/controls_spacing"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:isv_minValue="0"
+                app:isv_value="4"
+                app:isv_step="2"
+                />
+
+            <TextView
+                android:id="@+id/trackColorLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/trackWidthLabel"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toStartOf="@id/guidelineVerticalHalf"
+                app:layout_constraintHorizontal_bias="0"
+                android:text="trackColor"
+                />
+
+            <View
+                android:id="@+id/trackColorView"
+                android:layout_width="56dp"
+                android:layout_height="24dp"
+                app:layout_constraintStart_toEndOf="@id/guidelineVerticalHalf"
+                app:layout_constraintTop_toTopOf="@id/trackColorLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/trackColorLabel"
+                android:background="#f00"
+                />
+
+            <TextView
+                android:id="@+id/progressLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/trackColorLabel"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toStartOf="@id/guidelineVerticalHalf"
+                app:layout_constraintHorizontal_bias="0"
+                android:text="progress"
+                />
+
+            <SeekBar
+                android:id="@+id/progressSeekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/guidelineVerticalHalf"
+                app:layout_constraintTop_toTopOf="@id/progressLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/progressLabel"
+                android:max="100"
+                android:progress="33"
+                />
+
+            <TextView
+                android:id="@+id/progressWidthLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/progressLabel"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toStartOf="@id/guidelineVerticalHalf"
+                app:layout_constraintHorizontal_bias="0"
+                android:text="progressWidth"
+                />
+
+            <dev.tonycode.stepperviews.IntStepperView
+                android:id="@+id/progressWidthStepper"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/guidelineVerticalHalf"
+                app:layout_constraintTop_toTopOf="@id/progressWidthLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/progressWidthLabel"
+                app:isv_minValue="0"
+                app:isv_value="4"
+                app:isv_step="2"
+                />
+
+            <TextView
+                android:id="@+id/progressColorLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/progressWidthLabel"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toStartOf="@id/guidelineVerticalHalf"
+                app:layout_constraintHorizontal_bias="0"
+                android:text="progressColor"
+                />
+
+            <View
+                android:id="@+id/progressColorView"
+                android:layout_width="56dp"
+                android:layout_height="24dp"
+                app:layout_constraintStart_toEndOf="@id/guidelineVerticalHalf"
+                app:layout_constraintTop_toTopOf="@id/progressColorLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/progressColorLabel"
+                android:background="#f00"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+</LinearLayout>

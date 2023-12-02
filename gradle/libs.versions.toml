@@ -1,0 +1,25 @@
+# More about this file: https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
+
+[versions]
+minSdk = "16"  # Android 4.1 "Jelly Bean"
+targetSdk = "34"  # Android 13.0 "Tiramisu"
+compileSdk = "34"  # Android 13.0 "Tiramisu"
+buildTools = "34.0.0"
+androidGradlePlugin = "8.2.0"
+
+kotlin = "1.9.21"
+
+[libraries]
+android-material = "com.google.android.material:material:1.10.0"
+androidx-appcompat = "androidx.appcompat:appcompat:1.6.1"
+androidx-constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.4"
+androidx-core-ktx = "androidx.core:core-ktx:1.12.0"
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+
+[bundles]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+gradle-versions = "com.github.ben-manes.versions:0.50.0"  # https://github.com/ben-manes/gradle-versions-plugin
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

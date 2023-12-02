@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ArcProgressView">
+        <attr name="apv_startAngle" format="float" />
+        <attr name="apv_sweepAngle" format="float" />
+        <attr name="apv_trackWidth" format="dimension" />
+        <attr name="apv_trackColor" format="color" />
+        <attr name="apv_progress" format="float" />
+        <attr name="apv_progressWidth" format="dimension" />
+        <attr name="apv_progressColor" format="color" />
+    </declare-styleable>
+
+</resources>

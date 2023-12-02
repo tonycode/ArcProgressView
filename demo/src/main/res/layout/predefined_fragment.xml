@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp"
+        android:clipToPadding="false"
+        android:scrollbarStyle="outsideInset"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <dev.tonycode.views.ArcProgressView
+                android:id="@+id/arcProgressView1"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:apv_trackWidth="16dp"
+                app:apv_trackColor="#DBDFFD"
+                app:apv_progress="0.33"
+                app:apv_progressWidth="10dp"
+                app:apv_progressColor="#646FD4"
+                />
+
+            <dev.tonycode.views.ArcProgressView
+                android:id="@+id/arcProgressView2"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:apv_startAngle="-225"
+                app:apv_sweepAngle="270"
+                app:apv_trackWidth="4dp"
+                app:apv_trackColor="#FFD28F"
+                app:apv_progress="0.33"
+                app:apv_progressWidth="8dp"
+                app:apv_progressColor="#83A2FF"
+                />
+
+            <dev.tonycode.views.ArcProgressView
+                android:id="@+id/arcProgressView3"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="16dp"
+                app:apv_startAngle="-180"
+                app:apv_sweepAngle="270"
+                app:apv_trackWidth="8dp"
+                app:apv_trackColor="#00B4D8"
+                app:apv_progress="0.33"
+                app:apv_progressWidth="4dp"
+                app:apv_progressColor="#03045E"
+                />
+
+            <dev.tonycode.views.ArcProgressView
+                android:id="@+id/arcProgressView4"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="16dp"
+                app:apv_startAngle="-90"
+                app:apv_sweepAngle="270"
+                app:apv_trackWidth="10dp"
+                app:apv_trackColor="#FAC70B"
+                app:apv_progress="0.33"
+                app:apv_progressWidth="10dp"
+                app:apv_progressColor="#DF0E62"
+                />
+
+            <dev.tonycode.views.ArcProgressView
+                android:id="@+id/arcProgressView5"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="16dp"
+                app:apv_startAngle="-135"
+                app:apv_sweepAngle="270"
+                app:apv_progress="0.33"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_sheet"
+        >
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="32dp"
+            android:progress="33"
+            />
+    </FrameLayout>
+
+</LinearLayout>
