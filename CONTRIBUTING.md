@@ -19,7 +19,8 @@ footer
 - types
     - feat - A new feature
     - fix - A bug fix
-    - refactor - A code change that neither fixes a bug nor adds a feature
+    - redesign - Visual (UI) changes that do not add a new feature nor fixes a bug
+    - refactor - Any other code change that neither fixes a bug nor adds a feature
     - style - Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
     - docs - Documentation only changes
     - build - Changes that affect the build system or external dependencies
