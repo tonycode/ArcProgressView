@@ -2,8 +2,8 @@
 
 [versions]
 minSdk = "16"  # Android 4.1 "Jelly Bean"
-targetSdk = "34"  # Android 13.0 "Tiramisu"
-compileSdk = "34"  # Android 13.0 "Tiramisu"
+targetSdk = "34"  # Upside Down Cake
+compileSdk = "34"  # Upside Down Cake
 buildTools = "34.0.0"
 androidGradlePlugin = "8.2.0"
 
