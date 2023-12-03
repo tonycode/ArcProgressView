@@ -79,9 +79,9 @@ dependencies {
     implementation(libs.android.material)
     implementation(libs.androidx.constraintlayout)
 
-    implementation("com.github.tonycode:stepper-views:0.1.0")
-    implementation("com.github.dmfs:color-picker:1.3")
-    implementation("com.github.dmfs:retention-magic:1.3")  // required for "dmfs/color-picker"
+    implementation(libs.tonycode.stepperviews)
+    implementation(libs.dmfs.colorpicker)
+    implementation(libs.dmfs.retentionmagic)  // required for "dmfs/color-picker"
 
     //// library
     implementation(projects.library)
