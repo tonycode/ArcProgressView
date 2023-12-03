@@ -84,6 +84,20 @@
                 app:apv_progress="0.33"
                 />
 
+            <dev.tonycode.views.ArcProgressView
+                android:id="@+id/arcProgressView6"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="16dp"
+                app:apv_startAngle="-180"
+                app:apv_sweepAngle="360"
+                app:apv_progress="0.33"
+                app:apv_trackColor="#6A2C70"
+                app:apv_trackWidth="2dp"
+                app:apv_progressColor="#F08A5D"
+                app:apv_progressWidth="10dp"
+                />
+
         </LinearLayout>
     </ScrollView>
 

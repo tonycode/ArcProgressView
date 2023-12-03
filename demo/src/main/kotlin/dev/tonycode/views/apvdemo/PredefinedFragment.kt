@@ -29,6 +29,7 @@ class PredefinedFragment : Fragment(R.layout.predefined_fragment) {
                 vb.arcProgressView3.progress = floatProgress
                 vb.arcProgressView4.progress = floatProgress
                 vb.arcProgressView5.progress = floatProgress
+                vb.arcProgressView6.progress = floatProgress
             }
         })
     }
