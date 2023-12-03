@@ -10,8 +10,8 @@ android {
 
     defaultConfig {
         applicationId = "dev.tonycode.views.apvdemo"
-        versionCode = 2
-        versionName = "0.1.0"
+        versionCode = 3
+        versionName = "0.1.1-SNAPSHOT"
         archivesName = "ArcProgressView-demo-v$versionName-build_$versionCode"
 
         minSdk = libs.versions.minSdk.get().toInt()

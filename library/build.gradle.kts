@@ -75,7 +75,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.tonycode"
             artifactId = rootProject.name
-            version = "0.1.0"
+            version = "0.1.1-SNAPSHOT"
 
             configurePom()
 
