@@ -89,7 +89,7 @@ publishing {
 fun MavenPublication.configurePom() {
     pom {
         name = rootProject.name
-        description = "Android ui-component that display progress as arc"
+        description = "Android ui-component that display progress as an Arc"
         url = "https://github.com/tonycode/ArcProgressView"
 
         licenses {

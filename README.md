@@ -7,7 +7,7 @@ ArcProgressView
 [![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://apilevels.com)
 [![Release](https://jitpack.io/v/tonycode/ArcProgressView.svg)](https://jitpack.io/#tonycode/ArcProgressView)
 
-Android ui-component that display progress as arc
+Android ui-component that display progress as an Arc
 
 ![demo](docs/demo.gif)
 
