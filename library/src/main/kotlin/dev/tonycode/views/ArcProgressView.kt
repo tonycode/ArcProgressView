@@ -15,6 +15,7 @@ import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
 import androidx.core.graphics.toRectF
+import kotlin.math.abs
 import kotlin.math.max
 
 
@@ -37,16 +38,19 @@ class ArcProgressView @JvmOverloads constructor(
      */
     var startAngle: Float = DEFAULT_START_ANGLE
         set(value) {
-            field = value
+            field = normalizeAngle(value)
             invalidate()
         }
 
     /**
      * track end
+     *
+     * @throws IllegalStateException if value is negative
      */
     var sweepAngle: Float = DEFAULT_SWEEP_ANGLE
         set(value) {
-            field = value
+            if (value < -ANGLE_EPS) throw IllegalStateException("sweepAngle can't be negative")
+            field = normalizeAngle(abs(value))
             invalidate()
         }
 
@@ -63,6 +67,7 @@ class ArcProgressView @JvmOverloads constructor(
     @ColorInt
     var trackColor: Int = DEFAULT_TRACK_COLOR
         set(value) {
+            if (field == value) return
             field = value
             trackPaint.color = value
             invalidate()
@@ -91,6 +96,7 @@ class ArcProgressView @JvmOverloads constructor(
     @ColorInt
     var progressColor: Int = DEFAULT_PROGRESS_COLOR
         set(value) {
+            if (field == value) return
             field = value
             progressPaint.color = value
             invalidate()
@@ -158,6 +164,15 @@ class ArcProgressView @JvmOverloads constructor(
                     roundCorners = ta.getBoolean(attrIdx, DEFAULT_ROUND_CORNERS)
             }
         }
+    }
+
+    /**
+     * Make given angle (in degrees) fit -360..360
+     */
+    private fun normalizeAngle(src: Float): Float {
+        val remainder = src.mod(360f)
+        return if (abs(remainder) < ANGLE_EPS && abs(src) > ANGLE_EPS) 360f
+        else remainder
     }
 
     private fun updateRoundCorners(areRound: Boolean) {
@@ -311,6 +326,7 @@ class ArcProgressView @JvmOverloads constructor(
     }
 
     companion object {
+        private const val ANGLE_EPS = 0.001  // proximity to treat angles equal
         private const val DEFAULT_START_ANGLE = -180f  // from 9 o'clock
         private const val DEFAULT_SWEEP_ANGLE = 180f  // to 3 o'clock
         private const val DEFAULT_TRACK_WIDTH_PX: Float = 8f
