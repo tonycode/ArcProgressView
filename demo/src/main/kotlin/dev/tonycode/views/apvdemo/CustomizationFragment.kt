@@ -33,7 +33,7 @@ class CustomizationFragment : Fragment(R.layout.customization_fragment), ColorDi
 
         vb.startAngleStepper.value = vb.arcProgressView.startAngle.toInt()
 
-        vb.startAngleStepper.value = vb.arcProgressView.sweepAngle.toInt()
+        vb.sweepAngleStepper.value = vb.arcProgressView.sweepAngle.toInt()
 
         vb.trackWidthStepper.value = vb.arcProgressView.trackWidth.toInt()
 
