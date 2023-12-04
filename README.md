@@ -31,6 +31,10 @@ dependencies {
 
 ## ArcProgressView
 
+Consists of:
+- a track
+- a progress that occupy none / a part of track / full track (according to 0% .. 100%)
+
 ```xml
 <dev.tonycode.views.ArcProgressView
     android:id="@+id/arcProgressView1"
@@ -58,6 +62,16 @@ vb.arcProgressView1.apply {
     progressColor = 0xFF646FD4.toInt()
 }
 ```
+
+| xml-attribute       | property        | description                                                                                                                    |    default value    |
+|:--------------------|:----------------|:-------------------------------------------------------------------------------------------------------------------------------|:-------------------:|
+| `apv_startAngle`    | `startAngle`    | The start angle for both track and progress.<br/>uom: degrees (-360..360). Zero value corresponds to 3 o'clock.                | `-180` (9 o'clock)  |
+| `apv_sweepAngle`    | `sweepAngle`    | The track's end. Progress will be adjusted to the length of track, 100% will be "occupy full track".<br/>uom: degrees (0..360) | `180` (half circle) |
+| `apv_trackWidth`    | `trackWidth`    |                                                                                                                                |       `8.px`        |
+| `apv_trackColor`    | `trackColor`    |                                                                                                                                |      `#3f51b5`      |
+| `apv_progress`      | `progress`      | from `0f` (0%) to `1f` (100%)                                                                                                  |         `0`         |
+| `apv_progressWidth` | `progressWidth` |                                                                                                                                |       `16.px`       |
+| `apv_progressColor` | `progressColor` |                                                                                                                                |      `#002984`      |
 
 
 ## License

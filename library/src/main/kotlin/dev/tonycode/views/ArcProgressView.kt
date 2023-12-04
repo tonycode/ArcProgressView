@@ -30,7 +30,9 @@ class ArcProgressView @JvmOverloads constructor(
 
     //region public props
     /**
-     * track & progress start
+     * The start angle for both track and progress.
+     *
+     * - uom: degrees (-360..360). Zero value corresponds to 3 o'clock.
      */
     var startAngle: Float = DEFAULT_START_ANGLE
         set(value) {
@@ -66,7 +68,7 @@ class ArcProgressView @JvmOverloads constructor(
         }
 
     /**
-     * 1.0 stands for 100% progress
+     * from `0f` (0%) to `1f` (100%)
      */
     @FloatRange(from = 0.0, to = 1.0)
     var progress: Float = DEFAULT_PROGRESS
@@ -274,11 +276,11 @@ class ArcProgressView @JvmOverloads constructor(
     }
 
     companion object {
-        private const val DEFAULT_START_ANGLE = -180f  // 9-o'clock
-        private const val DEFAULT_SWEEP_ANGLE = 180f  // 3-o'clock
+        private const val DEFAULT_START_ANGLE = -180f  // from 9 o'clock
+        private const val DEFAULT_SWEEP_ANGLE = 180f  // to 3 o'clock
         private const val DEFAULT_TRACK_WIDTH_PX: Float = 8f
         private const val DEFAULT_TRACK_COLOR: Int = 0xFF3F51B5.toInt()
-        private const val DEFAULT_PROGRESS = 0f  // 0f .. 1f
+        private const val DEFAULT_PROGRESS = 0f  // 0f (0%) .. 1f (100%)
         private const val DEFAULT_PROGRESS_WIDTH_PX: Float = 16f
         private const val DEFAULT_PROGRESS_COLOR: Int = 0xFF002984.toInt()
     }
