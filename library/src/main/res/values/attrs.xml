@@ -20,6 +20,7 @@
         <attr name="apv_progress" format="float" />
         <attr name="apv_progressWidth" format="dimension" />
         <attr name="apv_progressColor" format="color" />
+        <attr name="apv_roundCorners" format="boolean" />
     </declare-styleable>
 
 </resources>

@@ -31,6 +31,7 @@
                 app:apv_progress="0.33"
                 app:apv_progressWidth="10dp"
                 app:apv_progressColor="#646FD4"
+                app:apv_roundCorners="false"
                 />
 
             <dev.tonycode.views.ArcProgressView
@@ -44,6 +45,7 @@
                 app:apv_progress="0.33"
                 app:apv_progressWidth="8dp"
                 app:apv_progressColor="#83A2FF"
+                app:apv_roundCorners="false"
                 />
 
             <dev.tonycode.views.ArcProgressView
@@ -82,6 +84,7 @@
                 app:apv_startAngle="-135"
                 app:apv_sweepAngle="270"
                 app:apv_progress="0.33"
+                app:apv_roundCorners="false"
                 />
 
             <dev.tonycode.views.ArcProgressView

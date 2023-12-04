@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.RectF
+import android.os.Build
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
@@ -94,6 +95,17 @@ class ArcProgressView @JvmOverloads constructor(
             progressPaint.color = value
             invalidate()
         }
+
+    /**
+     * Whether the corners of track and progress lines are round or not
+     */
+    var roundCorners: Boolean = DEFAULT_ROUND_CORNERS
+        set(value) {
+            if (field == value) return
+            field = value
+            updateRoundCorners(value)
+            invalidate()
+        }
     //endregion
 
     private val trackPaint = Paint()
@@ -122,6 +134,7 @@ class ArcProgressView @JvmOverloads constructor(
             isAntiAlias = true
             isDither = true
         }
+        updateRoundCorners(roundCorners)
     }
 
     private fun applyAttrs(ta: TypedArray) {
@@ -141,8 +154,16 @@ class ArcProgressView @JvmOverloads constructor(
                     progressWidth = ta.getDimension(attrIdx, DEFAULT_PROGRESS_WIDTH_PX)
                 R.styleable.ArcProgressView_apv_progressColor ->
                     progressColor = ta.getColor(attrIdx, DEFAULT_PROGRESS_COLOR)
+                R.styleable.ArcProgressView_apv_roundCorners ->
+                    roundCorners = ta.getBoolean(attrIdx, DEFAULT_ROUND_CORNERS)
             }
         }
+    }
+
+    private fun updateRoundCorners(areRound: Boolean) {
+        val cap = if (areRound) Paint.Cap.ROUND else Paint.Cap.BUTT
+        trackPaint.strokeCap = cap
+        progressPaint.strokeCap = cap
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -193,6 +214,7 @@ class ArcProgressView @JvmOverloads constructor(
         savedState.progress = progress
         savedState.progressWidth = progressWidth
         savedState.progressColor = progressColor
+        savedState.roundCorners = roundCorners
 
         return savedState
     }
@@ -210,6 +232,7 @@ class ArcProgressView @JvmOverloads constructor(
         progress = state.progress
         progressWidth = state.progressWidth
         progressColor = state.progressColor
+        roundCorners = state.roundCorners
 
         super.onRestoreInstanceState(state.superState)
     }
@@ -226,6 +249,7 @@ class ArcProgressView @JvmOverloads constructor(
         var progress: Float = DEFAULT_PROGRESS
         var progressWidth: Float = DEFAULT_PROGRESS_WIDTH_PX
         var progressColor: Int = DEFAULT_PROGRESS_COLOR
+        var roundCorners: Boolean = DEFAULT_ROUND_CORNERS
 
         /**
          * Called from [ArcProgressView.onSaveInstanceState]
@@ -243,6 +267,11 @@ class ArcProgressView @JvmOverloads constructor(
             progress = parcel.readFloat()
             progressWidth = parcel.readFloat()
             progressColor = parcel.readInt()
+            roundCorners = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                parcel.readBoolean()
+            } else {
+                (parcel.readByte() == 1.toByte())
+            }
         }
 
         override fun writeToParcel(out: Parcel, flags: Int) {
@@ -254,13 +283,19 @@ class ArcProgressView @JvmOverloads constructor(
             out.writeFloat(progress)
             out.writeFloat(progressWidth)
             out.writeInt(progressColor)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                out.writeBoolean(roundCorners)
+            } else {
+                out.writeByte(1)
+            }
         }
 
         override fun toString(): String {
             return "ApvSavedState(" +
                 "startAngle=$startAngle, sweepAngle=$sweepAngle, " +
                 "trackWidth=$trackWidth, trackColor=$trackColor, " +
-                "progress=$progress, progressWidth=$progressWidth, progressColor=$progressColor" +
+                "progress=$progress, progressWidth=$progressWidth, progressColor=$progressColor, " +
+                "roundCorners=$roundCorners" +
                 ")"
         }
 
@@ -283,6 +318,7 @@ class ArcProgressView @JvmOverloads constructor(
         private const val DEFAULT_PROGRESS = 0f  // 0f (0%) .. 1f (100%)
         private const val DEFAULT_PROGRESS_WIDTH_PX: Float = 16f
         private const val DEFAULT_PROGRESS_COLOR: Int = 0xFF002984.toInt()
+        private const val DEFAULT_ROUND_CORNERS: Boolean = true
     }
 
 }

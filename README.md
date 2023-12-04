@@ -47,6 +47,7 @@ Consists of:
     app:apv_progress="0.5"
     app:apv_progressWidth="12dp"
     app:apv_progressColor="#646fd4"
+    app:apv_roundCorners="false"
     />
 ```
 
@@ -60,6 +61,7 @@ vb.arcProgressView1.apply {
     progress = 0.5f
     progressWidth = 12.dp
     progressColor = 0xFF646FD4.toInt()
+    roundCorners = false
 }
 ```
 
@@ -72,6 +74,7 @@ vb.arcProgressView1.apply {
 | `apv_progress`      | `progress`      | from `0f` (0%) to `1f` (100%)                                                                                                  |         `0`         |
 | `apv_progressWidth` | `progressWidth` |                                                                                                                                |       `16.px`       |
 | `apv_progressColor` | `progressColor` |                                                                                                                                |      `#002984`      |
+| `apv_roundCorners`  | `roundCorners`  | Whether the corners of track and progress lines are round or not                                                               |       `true`        |
 
 
 ## License

@@ -208,6 +208,29 @@
                 android:background="#f00"
                 />
 
+            <TextView
+                android:id="@+id/roundCornersLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/roundCornersSwitch"
+                app:layout_constraintEnd_toStartOf="@id/guidelineVerticalHalf"
+                app:layout_constraintBottom_toBottomOf="@id/roundCornersSwitch"
+                app:layout_constraintHorizontal_bias="0"
+                android:text="roundCorners"
+                />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/roundCornersSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/guidelineVerticalHalf"
+                app:layout_constraintTop_toBottomOf="@id/progressColorView"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:checked="true"
+                />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 
