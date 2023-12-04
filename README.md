@@ -1,17 +1,18 @@
 ArcProgressView
 ===============
 
-![Release](https://jitpack.io/v/tonycode/ArcProgressView.svg)
+[![Platform](http://img.shields.io/badge/platform-android-brightgreen.svg?style=flat)](https://developer.android.com)
+[![Language](http://img.shields.io/badge/language-kotlin-blue.svg?style=flat)](https://kotlinlang.org)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://apilevels.com)
+[![Release](https://jitpack.io/v/tonycode/ArcProgressView.svg)](https://jitpack.io/#tonycode/ArcProgressView)
 
 Android ui-component that display progress as arc
-
-- written in Kotlin
-- `minSdk` = 16
 
 ![demo](docs/demo.gif)
 
 
-## Usage
+## Gradle
 
 ```kotlin
 repositories {
