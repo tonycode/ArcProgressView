@@ -9,7 +9,7 @@ ArcProgressView
 
 Android ui-component that displays progress as an Arc
 
-![demo](docs/demo.gif)
+![demo](docs/demo.webm)
 
 
 ## Gradle
