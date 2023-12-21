@@ -45,11 +45,11 @@ class ArcProgressView @JvmOverloads constructor(
     /**
      * track end
      *
-     * @throws IllegalStateException if value is negative
+     * @throws IllegalArgumentException if value is negative
      */
     var sweepAngle: Float = DEFAULT_SWEEP_ANGLE
         set(value) {
-            if (value < -ANGLE_EPS) throw IllegalStateException("sweepAngle can't be negative")
+            if (value < -ANGLE_EPS) throw IllegalArgumentException("sweepAngle can't be negative")
             field = normalizeAngle(abs(value))
             invalidate()
         }
