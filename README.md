@@ -24,7 +24,7 @@ repositories {
 ```kotlin
 dependencies {
     //...
-    implementation("com.github.tonycode:ArcProgressView:0.1.0")
+    implementation("com.github.tonycode:ArcProgressView:0.1.1")
 }
 ```
 
