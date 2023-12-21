@@ -20,7 +20,7 @@ import kotlin.math.max
 
 
 /**
- * A view that display progress as an Arc
+ * A view that displays progress as an Arc
  *
  * Consists of:
  * - track
