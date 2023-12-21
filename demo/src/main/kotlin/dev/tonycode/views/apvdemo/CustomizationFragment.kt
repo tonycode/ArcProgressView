@@ -33,7 +33,7 @@ class CustomizationFragment : Fragment(R.layout.customization_fragment), ColorDi
 
         vb.startAngleStepper.value = vb.arcProgressView.startAngle.toInt()
 
-        vb.startAngleStepper.value = vb.arcProgressView.sweepAngle.toInt()
+        vb.sweepAngleStepper.value = vb.arcProgressView.sweepAngle.toInt()
 
         vb.trackWidthStepper.value = vb.arcProgressView.trackWidth.toInt()
 
@@ -45,6 +45,8 @@ class CustomizationFragment : Fragment(R.layout.customization_fragment), ColorDi
         vb.progressWidthStepper.value = vb.arcProgressView.progressWidth.toInt()
 
         vb.progressColorView.setBackgroundColor(vb.arcProgressView.progressColor)
+
+        vb.roundCornersSwitch.isChecked = vb.arcProgressView.roundCorners
 
 
         vb.startAngleStepper.onChangeListener = {
@@ -81,6 +83,10 @@ class CustomizationFragment : Fragment(R.layout.customization_fragment), ColorDi
 
             df.setPalettes(*progressPalettes.toTypedArray())
             df.show(childFragmentManager, null)
+        }
+
+        vb.roundCornersSwitch.setOnCheckedChangeListener { _, isChecked ->
+            vb.arcProgressView.roundCorners = isChecked
         }
     }
 

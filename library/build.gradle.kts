@@ -75,7 +75,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.tonycode"
             artifactId = rootProject.name
-            version = "0.1.0"
+            version = "0.1.1-SNAPSHOT"
 
             configurePom()
 
@@ -89,7 +89,7 @@ publishing {
 fun MavenPublication.configurePom() {
     pom {
         name = rootProject.name
-        description = "Android ui-component that display progress as arc"
+        description = "Android ui-component that displays progress as an Arc"
         url = "https://github.com/tonycode/ArcProgressView"
 
         licenses {

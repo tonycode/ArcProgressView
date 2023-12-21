@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:gravity="center_horizontal"
             >
 
             <dev.tonycode.views.ArcProgressView
@@ -30,6 +31,7 @@
                 app:apv_progress="0.33"
                 app:apv_progressWidth="10dp"
                 app:apv_progressColor="#646FD4"
+                app:apv_roundCorners="false"
                 />
 
             <dev.tonycode.views.ArcProgressView
@@ -43,6 +45,7 @@
                 app:apv_progress="0.33"
                 app:apv_progressWidth="8dp"
                 app:apv_progressColor="#83A2FF"
+                app:apv_roundCorners="false"
                 />
 
             <dev.tonycode.views.ArcProgressView
@@ -81,6 +84,21 @@
                 app:apv_startAngle="-135"
                 app:apv_sweepAngle="270"
                 app:apv_progress="0.33"
+                app:apv_roundCorners="false"
+                />
+
+            <dev.tonycode.views.ArcProgressView
+                android:id="@+id/arcProgressView6"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="16dp"
+                app:apv_startAngle="-180"
+                app:apv_sweepAngle="360"
+                app:apv_progress="0.33"
+                app:apv_trackColor="#6A2C70"
+                app:apv_trackWidth="2dp"
+                app:apv_progressColor="#F08A5D"
+                app:apv_progressWidth="10dp"
                 />
 
         </LinearLayout>

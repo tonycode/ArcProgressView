@@ -2,13 +2,25 @@
 <resources>
 
     <declare-styleable name="ArcProgressView">
+        <!--
+            The start angle for both track and progress. <br/>
+            uom: degrees (-360..360). Zero value corresponds to 3 o'clock. <br/>
+            default: -180 (9 o'clock)
+            -->
         <attr name="apv_startAngle" format="float" />
+        <!--
+            The track's end. Progress will be adjusted to the length of track, 100% will be "occupy full track" <br/>
+            uom: degrees (0..360) <br/>
+            default: 180 (half-circle)
+            -->
         <attr name="apv_sweepAngle" format="float" />
         <attr name="apv_trackWidth" format="dimension" />
         <attr name="apv_trackColor" format="color" />
+        <!-- from "0.0" (0%) to "1.0" (100%) -->
         <attr name="apv_progress" format="float" />
         <attr name="apv_progressWidth" format="dimension" />
         <attr name="apv_progressColor" format="color" />
+        <attr name="apv_roundCorners" format="boolean" />
     </declare-styleable>
 
 </resources>

@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.RectF
+import android.os.Build
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
@@ -14,11 +15,12 @@ import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
 import androidx.core.graphics.toRectF
+import kotlin.math.abs
 import kotlin.math.max
 
 
 /**
- * A view that display progress as arc
+ * A view that displays progress as an Arc
  *
  * Consists of:
  * - track
@@ -30,20 +32,25 @@ class ArcProgressView @JvmOverloads constructor(
 
     //region public props
     /**
-     * track & progress start
+     * The start angle for both track and progress.
+     *
+     * - uom: degrees (-360..360). Zero value corresponds to 3 o'clock.
      */
     var startAngle: Float = DEFAULT_START_ANGLE
         set(value) {
-            field = value
+            field = normalizeAngle(value)
             invalidate()
         }
 
     /**
      * track end
+     *
+     * @throws IllegalArgumentException if value is negative
      */
     var sweepAngle: Float = DEFAULT_SWEEP_ANGLE
         set(value) {
-            field = value
+            if (value < -ANGLE_EPS) throw IllegalArgumentException("sweepAngle can't be negative")
+            field = normalizeAngle(abs(value))
             invalidate()
         }
 
@@ -60,13 +67,14 @@ class ArcProgressView @JvmOverloads constructor(
     @ColorInt
     var trackColor: Int = DEFAULT_TRACK_COLOR
         set(value) {
+            if (field == value) return
             field = value
             trackPaint.color = value
             invalidate()
         }
 
     /**
-     * 1.0 stands for 100% progress
+     * from `0f` (0%) to `1f` (100%)
      */
     @FloatRange(from = 0.0, to = 1.0)
     var progress: Float = DEFAULT_PROGRESS
@@ -88,8 +96,20 @@ class ArcProgressView @JvmOverloads constructor(
     @ColorInt
     var progressColor: Int = DEFAULT_PROGRESS_COLOR
         set(value) {
+            if (field == value) return
             field = value
             progressPaint.color = value
+            invalidate()
+        }
+
+    /**
+     * Whether the corners of track and progress lines are round or not
+     */
+    var roundCorners: Boolean = DEFAULT_ROUND_CORNERS
+        set(value) {
+            if (field == value) return
+            field = value
+            updateRoundCorners(value)
             invalidate()
         }
     //endregion
@@ -120,6 +140,7 @@ class ArcProgressView @JvmOverloads constructor(
             isAntiAlias = true
             isDither = true
         }
+        updateRoundCorners(roundCorners)
     }
 
     private fun applyAttrs(ta: TypedArray) {
@@ -139,8 +160,25 @@ class ArcProgressView @JvmOverloads constructor(
                     progressWidth = ta.getDimension(attrIdx, DEFAULT_PROGRESS_WIDTH_PX)
                 R.styleable.ArcProgressView_apv_progressColor ->
                     progressColor = ta.getColor(attrIdx, DEFAULT_PROGRESS_COLOR)
+                R.styleable.ArcProgressView_apv_roundCorners ->
+                    roundCorners = ta.getBoolean(attrIdx, DEFAULT_ROUND_CORNERS)
             }
         }
+    }
+
+    /**
+     * Make given angle (in degrees) fit -360..360
+     */
+    private fun normalizeAngle(src: Float): Float {
+        val remainder = src.mod(360f)
+        return if (abs(remainder) < ANGLE_EPS && abs(src) > ANGLE_EPS) 360f
+        else remainder
+    }
+
+    private fun updateRoundCorners(areRound: Boolean) {
+        val cap = if (areRound) Paint.Cap.ROUND else Paint.Cap.BUTT
+        trackPaint.strokeCap = cap
+        progressPaint.strokeCap = cap
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -191,6 +229,7 @@ class ArcProgressView @JvmOverloads constructor(
         savedState.progress = progress
         savedState.progressWidth = progressWidth
         savedState.progressColor = progressColor
+        savedState.roundCorners = roundCorners
 
         return savedState
     }
@@ -208,6 +247,7 @@ class ArcProgressView @JvmOverloads constructor(
         progress = state.progress
         progressWidth = state.progressWidth
         progressColor = state.progressColor
+        roundCorners = state.roundCorners
 
         super.onRestoreInstanceState(state.superState)
     }
@@ -224,6 +264,7 @@ class ArcProgressView @JvmOverloads constructor(
         var progress: Float = DEFAULT_PROGRESS
         var progressWidth: Float = DEFAULT_PROGRESS_WIDTH_PX
         var progressColor: Int = DEFAULT_PROGRESS_COLOR
+        var roundCorners: Boolean = DEFAULT_ROUND_CORNERS
 
         /**
          * Called from [ArcProgressView.onSaveInstanceState]
@@ -241,6 +282,11 @@ class ArcProgressView @JvmOverloads constructor(
             progress = parcel.readFloat()
             progressWidth = parcel.readFloat()
             progressColor = parcel.readInt()
+            roundCorners = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                parcel.readBoolean()
+            } else {
+                (parcel.readByte() == 1.toByte())
+            }
         }
 
         override fun writeToParcel(out: Parcel, flags: Int) {
@@ -252,13 +298,19 @@ class ArcProgressView @JvmOverloads constructor(
             out.writeFloat(progress)
             out.writeFloat(progressWidth)
             out.writeInt(progressColor)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                out.writeBoolean(roundCorners)
+            } else {
+                out.writeByte(1)
+            }
         }
 
         override fun toString(): String {
             return "ApvSavedState(" +
                 "startAngle=$startAngle, sweepAngle=$sweepAngle, " +
                 "trackWidth=$trackWidth, trackColor=$trackColor, " +
-                "progress=$progress, progressWidth=$progressWidth, progressColor=$progressColor" +
+                "progress=$progress, progressWidth=$progressWidth, progressColor=$progressColor, " +
+                "roundCorners=$roundCorners" +
                 ")"
         }
 
@@ -274,13 +326,15 @@ class ArcProgressView @JvmOverloads constructor(
     }
 
     companion object {
-        private const val DEFAULT_START_ANGLE = -180f  // 9-o'clock
-        private const val DEFAULT_SWEEP_ANGLE = 180f  // 3-o'clock
+        private const val ANGLE_EPS = 0.001  // proximity to treat angles equal
+        private const val DEFAULT_START_ANGLE = -180f  // from 9 o'clock
+        private const val DEFAULT_SWEEP_ANGLE = 180f  // to 3 o'clock
         private const val DEFAULT_TRACK_WIDTH_PX: Float = 8f
         private const val DEFAULT_TRACK_COLOR: Int = 0xFF3F51B5.toInt()
-        private const val DEFAULT_PROGRESS = 0f  // 0f .. 1f
+        private const val DEFAULT_PROGRESS = 0f  // 0f (0%) .. 1f (100%)
         private const val DEFAULT_PROGRESS_WIDTH_PX: Float = 16f
         private const val DEFAULT_PROGRESS_COLOR: Int = 0xFF002984.toInt()
+        private const val DEFAULT_ROUND_CORNERS: Boolean = true
     }
 
 }
