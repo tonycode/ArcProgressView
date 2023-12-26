@@ -4,13 +4,13 @@
     <item
         android:id="@+id/menu_item_predefined"
         android:title="Predefined"
-        android:icon="@drawable/outline_apps_24"
+        android:icon="@drawable/rounded_progress_activity_24"
         />
 
     <item
         android:id="@+id/menu_item_custom"
         android:title="Custom"
-        android:icon="@drawable/outline_display_settings_24"
+        android:icon="@drawable/rounded_display_settings_24"
         />
 
 </menu>
