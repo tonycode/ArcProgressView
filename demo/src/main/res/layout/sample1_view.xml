@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.LinearLayout"
+    tools:layout_width="match_parent"
+    tools:layout_height="wrap_content"
+    tools:orientation="horizontal"
+    tools:background="@color/azulado"
+    tools:padding="@dimen/background_padding"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/corner_radius_medium"
+        app:cardBackgroundColor="@color/galaxea"
+        app:contentPadding="@dimen/surface_padding"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <dev.tonycode.views.ArcProgressView
+                android:id="@+id/score1Apv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintDimensionRatio="H,1:1"
+                app:apv_startAngle="90"
+                app:apv_sweepAngle="360"
+                app:apv_trackWidth="6dp"
+                app:apv_trackColor="@color/nero"
+                tools:apv_progress="0.4"
+                app:apv_progressWidth="6dp"
+                app:apv_progressColor="@color/jovial_jade"
+                />
+
+            <TextView
+                android:id="@+id/score1Value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/score1Apv"
+                app:layout_constraintTop_toTopOf="@id/score1Apv"
+                app:layout_constraintEnd_toEndOf="@id/score1Apv"
+                app:layout_constraintBottom_toBottomOf="@id/score1Apv"
+                tools:text="4/10"
+                android:textColor="@color/seaweed"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/score1Label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/score1Apv"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                tools:text="Score #1"
+                android:textColor="@color/grain_of_salt"
+                android:textSize="14sp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        app:cardCornerRadius="@dimen/corner_radius_medium"
+        app:cardBackgroundColor="@color/galaxea"
+        app:contentPadding="8dp"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <dev.tonycode.views.ArcProgressView
+                android:id="@+id/score2Apv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintDimensionRatio="H,1:1"
+                app:apv_startAngle="90"
+                app:apv_sweepAngle="360"
+                app:apv_trackWidth="6dp"
+                app:apv_trackColor="@color/nero"
+                tools:apv_progress="0.8"
+                app:apv_progressWidth="6dp"
+                app:apv_progressColor="@color/jovial_jade"
+                />
+
+            <TextView
+                android:id="@+id/score2Value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/score2Apv"
+                app:layout_constraintTop_toTopOf="@id/score2Apv"
+                app:layout_constraintEnd_toEndOf="@id/score2Apv"
+                app:layout_constraintBottom_toBottomOf="@id/score2Apv"
+                tools:text="8/10"
+                android:textColor="@color/seaweed"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/score2Label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/score2Apv"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                tools:text="Score #2"
+                android:textColor="@color/grain_of_salt"
+                android:textSize="14sp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="match_parent"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        app:cardCornerRadius="@dimen/corner_radius_medium"
+        app:cardBackgroundColor="@color/galaxea"
+        app:contentPadding="8dp"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <dev.tonycode.views.ArcProgressView
+                android:id="@+id/progressApv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintDimensionRatio="W,1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:apv_startAngle="-180"
+                app:apv_sweepAngle="180"
+                app:apv_trackWidth="6dp"
+                app:apv_trackColor="@color/nero"
+                app:apv_progress="0.25"
+                app:apv_progressWidth="6dp"
+                app:apv_progressColor="@color/jovial_jade"
+                />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="@id/progressApv"
+                app:layout_constraintTop_toTopOf="@id/progressApv"
+                app:layout_constraintEnd_toEndOf="@id/progressApv"
+                app:layout_constraintBottom_toBottomOf="@id/progressApv"
+                android:layout_margin="24dp"
+                android:background="@drawable/bg_circle"
+                app:elevation="8dp"
+                >
+                <TextView
+                    android:id="@+id/progressValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    tools:text="25%"
+                    android:textColor="@color/seaweed"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:includeFontPadding="false"
+                    />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/progressLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:text="@string/progress"
+                android:textColor="@color/grain_of_salt"
+                android:textSize="14sp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</merge>

@@ -3,8 +3,14 @@
 
     <item
         android:id="@+id/menu_item_predefined"
-        android:title="Predefined"
+        android:title="Styled"
         android:icon="@drawable/rounded_progress_activity_24"
+        />
+
+    <item
+        android:id="@+id/menu_item_samples"
+        android:title="Samples"
+        android:icon="@drawable/rounded_widgets_24"
         />
 
     <item

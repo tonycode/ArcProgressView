@@ -9,4 +9,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
 
+    <color name="grain_of_salt">#D7DADE</color>
+    <color name="jovial_jade">#8EEBA2</color>
+    <color name="seaweed">#29C97C</color>
+    <color name="galaxea">#38305F</color>
+    <color name="azulado">#22194E</color>
+    <color name="nero">#232428</color>
+
 </resources>

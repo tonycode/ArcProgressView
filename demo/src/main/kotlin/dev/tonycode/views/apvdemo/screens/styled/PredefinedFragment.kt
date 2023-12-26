@@ -1,13 +1,17 @@
-package dev.tonycode.views.apvdemo
+package dev.tonycode.views.apvdemo.screens.styled
 
 import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
+import dev.tonycode.views.apvdemo.R
 import dev.tonycode.views.apvdemo.databinding.PredefinedFragmentBinding
 import dev.tonycode.views.apvdemo.util.SimpleSeekBarChangeListener
 
 
+/**
+ * Example styling
+ */
 class PredefinedFragment : Fragment(R.layout.predefined_fragment) {
 
     private var _vb: PredefinedFragmentBinding? = null

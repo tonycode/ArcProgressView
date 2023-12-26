@@ -4,6 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import dev.tonycode.views.apvdemo.databinding.MainActivityBinding
+import dev.tonycode.views.apvdemo.screens.customization.CustomizationFragment
+import dev.tonycode.views.apvdemo.screens.samples.SamplesFragment
+import dev.tonycode.views.apvdemo.screens.styled.PredefinedFragment
+import dev.tonycode.views.apvdemo.util.consumed
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,15 +26,18 @@ class MainActivity : AppCompatActivity() {
 
         vb.bottomNav.setOnItemSelectedListener {
             if (vb.bottomNav.selectedItemId == it.itemId) return@setOnItemSelectedListener false
+
             when (it.itemId) {
-                R.id.menu_item_predefined -> {
+                R.id.menu_item_predefined -> consumed {
                     showFragment(PredefinedFragment())
-                    true
                 }
 
-                R.id.menu_item_custom -> {
+                R.id.menu_item_samples -> consumed {
+                    showFragment(SamplesFragment())
+                }
+
+                R.id.menu_item_custom -> consumed {
                     showFragment(CustomizationFragment())
-                    true
                 }
 
                 else -> false

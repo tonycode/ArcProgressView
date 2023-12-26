@@ -3,4 +3,12 @@
 
     <string name="app_name">ArcProgressView demo</string>
 
+    <!-- unicodes:
+      - \u2009 = thin space
+      -->
+
+    <string name="progress">Progress</string>
+    <string name="score_label_pattern">Score #%d</string>
+    <string name="score_pattern">%1$d\u2009/\u2009%2$d</string>
+
 </resources>

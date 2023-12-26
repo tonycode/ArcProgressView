@@ -1,9 +1,10 @@
-package dev.tonycode.views.apvdemo
+package dev.tonycode.views.apvdemo.screens.customization
 
 import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
+import dev.tonycode.views.apvdemo.R
 import dev.tonycode.views.apvdemo.databinding.CustomizationFragmentBinding
 import dev.tonycode.views.apvdemo.util.SimpleSeekBarChangeListener
 import org.dmfs.android.colorpicker.ColorPickerDialogFragment
